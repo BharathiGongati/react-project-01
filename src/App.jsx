@@ -150,8 +150,7 @@ export default function App() {
             <p className="hero-eyebrow">Hey there, I'm</p>
             <h1 className="hero-name">{FULL_NAME}</h1>
             <p className="hero-tagline">
-              Frontend Developer crafting fast, beautiful web experiences with
-              React &amp; modern tooling.
+             Full Stack Developer building responsive web applications with React, Node.js, Express.js, and modern technologies.
             </p>
             <div className="hero-cta">
               <a href="#projects" className="btn btn-primary">View Projects</a>
