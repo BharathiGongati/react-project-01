@@ -10,7 +10,7 @@ const contact = {
   linkedin:     { href: 'https://www.linkedin.com/in/bharathi-gongati-773079253', label: 'LinkedIn',  sub: 'Bharathi Gongati' },
   whatsapp:     { href: 'https://wa.me/917981995791',                 label: 'WhatsApp',  sub: '+91 7981995791' },
   email:        { href: 'mailto:bharathigongati7@gmail.com',           label: 'Email',     sub: 'bharathigongati7@gmail.com' },
-  resume:       { href: '/Bharathi_Gongati_FullStack_Developer_Resume.pdf' },
+  resume:       { href: `${import.meta.env.BASE_URL}Bharathi_Gongati_FullStack_Developer_Resume.pdf` },
 }
 
 const skills = [
