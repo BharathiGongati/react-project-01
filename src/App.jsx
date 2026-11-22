@@ -1,50 +1,76 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import profileImg from './assets/profile.png'
+import profileImg from './assets/profilephoto.jpeg'
 import './App.css'
 
 const SI = 'https://cdn.simpleicons.org'
 
 const contact = {
-  github:       { href: 'https://github.com/ratiranjan-das',          label: 'GitHub',    sub: '@ratiranjan-das' },
-  linkedin:     { href: 'https://www.linkedin.com/in/ratiranjan-das-4b14041ab/', label: 'LinkedIn',  sub: 'Ratiranjan Das' },
-  whatsapp:     { href: 'https://wa.me/916370295447',                 label: 'WhatsApp',  sub: '+91 63702 95447' },
-  email:        { href: 'mailto:dasratiranjan65@gmail.com',           label: 'Email',     sub: 'dasratiranjan65@gmail.com' },
-  resume:       { href: '/Das_Resume.pdf' },
+  github:       { href: 'https://github.com/BharathiGongati',          label: 'GitHub',    sub: '@BharathiGongati' },
+  linkedin:     { href: 'https://www.linkedin.com/in/bharathi-gongati-773079253', label: 'LinkedIn',  sub: 'Bharathi Gongati' },
+  whatsapp:     { href: 'https://wa.me/917981995791',                 label: 'WhatsApp',  sub: '+91 7981995791' },
+  email:        { href: 'mailto:bharathigongati7@gmail.com',           label: 'Email',     sub: 'bharathigongati7@gmail.com' },
+  resume:       { href: '/Bharathi_Gongati_FullStack_Developer_Resume.pdf' },
 }
 
 const skills = [
-  { name: 'HTML',         logo: `${SI}/html5/E34F26` },
-  { name: 'CSS',          logo: `${SI}/css/1572B6` },
-  { name: 'JavaScript',   logo: `${SI}/javascript/F7DF1E` },
-  { name: 'React',        logo: `${SI}/react/61DAFB` },
-  { name: 'TypeScript',   logo: `${SI}/typescript/3178C6` },
-  { name: 'Next.js',      logo: `${SI}/nextdotjs/000000` },
+  // Frontend
+  { name: 'HTML',          logo: `${SI}/html5/E34F26` },
+  { name: 'CSS',           logo: `${SI}/css/1572B6` },
+  { name: 'JavaScript',    logo: `${SI}/javascript/F7DF1E` },
+  { name: 'React',         logo: `${SI}/react/61DAFB` },
+  { name: 'TypeScript',    logo: `${SI}/typescript/3178C6` },
+  { name: 'Next.js',       logo: `${SI}/nextdotjs/000000` },
+  { name: 'Redux',         logo: `${SI}/redux/764ABC` },
   { name: 'Redux Toolkit', logo: `${SI}/redux/764ABC` },
-  { name: 'TanStack Query', logo: `${SI}/reactquery/FF4154` },
-  { name: 'Figma',        logo: `${SI}/figma/F24E1E` },
-  { name: 'Git CLI',      logo: `${SI}/git/F05032` },
-  { name: 'GitHub',       logo: `${SI}/github/181717` },
-  { name: 'Bitbucket',    logo: `${SI}/bitbucket/0052CC` },
-  { name: 'Zustand',       emoji: '🐻' },
-  { name: 'Ant Design',   logo: `${SI}/antdesign/0170FE` },
-  { name: 'Material UI',  logo: `${SI}/mui/007FFF` },
-  { name: 'Tailwind',     logo: `${SI}/tailwindcss/06B6D4` },
-  { name: 'SCSS',         logo: `${SI}/sass/CC6699` },
-  { name: 'Claude AI',    logo: `${SI}/anthropic/191919` },
-]
+  // { name: 'TanStack Query', logo: `${SI}/reactquery/FF4154` },
+  // { name: 'Figma',        logo: `${SI}/figma/F24E1E` },
+
+  // Backend
+  { name: 'Node.js',       logo: `${SI}/nodedotjs/339933` },
+  { name: 'Express.js',    logo: `${SI}/express/000000` },
+  { name: 'Java',          logo: `${SI}/openjdk/437291` },
+
+  // Database
+  { name: 'MongoDB',       logo: `${SI}/mongodb/47A248` },
+  { name: 'SQL',           logo: `${SI}/mysql/4479A1` },
+
+  // Version Control
+  { name: 'Git CLI',       logo: `${SI}/git/F05032` },
+  { name: 'GitHub',        logo: `${SI}/github/181717` },
+  // { name: 'Bitbucket',    logo: `${SI}/bitbucket/0052CC` },
+
+  // State Management
+  // { name: 'Zustand',       emoji: '🐻' },
+
+  // UI Libraries & Styling
+  { name: 'Ant Design',    logo: `${SI}/antdesign/0170FE` },
+  { name: 'Material UI',   logo: `${SI}/mui/007FFF` },
+  { name: 'Tailwind',      logo: `${SI}/tailwindcss/06B6D4` },
+  { name: 'SCSS',          logo: `${SI}/sass/CC6699` },
+
+  // API & Tools
+  { name: 'Postman',       logo: `${SI}/postman/FF6C37` },
+  { name: 'Axios',         logo: `${SI}/axios/5A29E4` },
+  { name: 'REST API',      logo: `${SI}/openapiinitiative/6BA539` },
+
+  // AI Tools
+  { name: 'ChatGPT',       logo: `${SI}/openai/412991` },
+  { name: 'GitHub Copilot', logo: `${SI}/githubcopilot/000000` },
+  { name: 'Claude AI',     logo: `${SI}/anthropic/191919` },
+];
 
 const UNSPLASH = 'https://images.unsplash.com'
 
 const projects = [
-  {
-    title: 'Revind.AI — Manufacturing ERP',
-    category: 'ERP Platform',
-    desc: 'A manufacturing ERP platform with Work Order management, dynamic group-by toggles, multi-field filtering, and production dashboards. Built reusable UI components from Figma designs within a Mono Repo architecture.',
-    tags: ['Next.js', 'TypeScript', 'ReactJS', 'Figma', 'JIRA'],
-    preview: 'https://api.microlink.io/?url=https://revind.ai&screenshot=true&embed=screenshot.url',
-    comingSoon: false,
-  },
+  // {
+  //   title: 'Revind.AI — Manufacturing ERP',
+  //   category: 'ERP Platform',
+  //   desc: 'A manufacturing ERP platform with Work Order management, dynamic group-by toggles, multi-field filtering, and production dashboards. Built reusable UI components from Figma designs within a Mono Repo architecture.',
+  //   tags: ['Next.js', 'TypeScript', 'ReactJS', 'Figma', 'JIRA'],
+  //   preview: 'https://api.microlink.io/?url=https://revind.ai&screenshot=true&embed=screenshot.url',
+  //   comingSoon: false,
+  // },
   {
     title: 'RIOO — Property Management System',
     category: 'Enterprise Web App',
@@ -71,7 +97,7 @@ const projects = [
   },
 ]
 
-const FULL_NAME = 'Ratiranjan Das'
+const FULL_NAME = 'Bharathi Gongati'
 
 export default function App() {
   const [dark, setDark] = useState(
@@ -86,7 +112,7 @@ export default function App() {
     <>
       {/* ── Navbar ─────────────────────────────────── */}
       <header className="navbar">
-        <span className="navbar-logo">RD</span>
+        <span className="navbar-logo">BG</span>
         <div className="navbar-right">
           <nav className="navbar-links">
             <a href="#about">About</a>
@@ -134,7 +160,7 @@ export default function App() {
           </div>
           <div className="hero-avatar">
             <div className="avatar-ring">
-              <img src={profileImg} alt="Ratiranjan Das" className="avatar-img" />
+              <img src={profileImg} alt="Gongati Bharathi" className="avatar-img" />
             </div>
             <div className="avatar-badge react-badge">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="#FFD700" stroke="#FFA500" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round">
@@ -299,7 +325,7 @@ export default function App() {
 
           {/* Resume */}
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <a href={contact.resume.href} download="Das_Resume.pdf" className="resume-btn">
+          <a href={contact.resume.href} download="Bharathi_Gongati_FullStack_Developer_Resume.pdf" className="resume-btn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
             </svg>
@@ -311,7 +337,7 @@ export default function App() {
 
       {/* ── Footer ─────────────────────────────────── */}
       <footer className="footer">
-        <span>© 2026 Ratiranjan Das</span>
+        <span>© 2026 Bharathi Gongati</span>
         <span className="footer-dot">·</span>
         <span>Built with React &amp; Vite</span>
       </footer>
